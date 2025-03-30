@@ -1,19 +1,23 @@
-edition = "2023";
+syntax = "proto3";
 
 import "google/api/annotations.proto";
 
-option features.field_presence = IMPLICIT;
-option go_package = "biado/minimaltest";
+option go_package = "./minimaltest";
 
 package minimaltest;
 
 service MinimalTest {
 
-	rpc PutPair(PutPairRequest) returns (PairResponse) {}
+	rpc PutPair(PutPairRequest) returns (PairResponse) {
+	    option (google.api.http) = {
+	    	post: "/api/putpair"
+			body: "*"
+	    };
+	}
 	rpc GetPair(GetPairRequest) returns (PairResponse) {
 	    option (google.api.http) = {
-	    	post: "/get"
-		   	body: "*"
+	    	post: "/api/getpair"
+			body: "*"
 	    };
 	}
 

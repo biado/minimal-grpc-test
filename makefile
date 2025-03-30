@@ -1,7 +1,8 @@
 proto:	
 	protoc  -I ./minimaltest \
-		--go_out=./minimaltest --go_opt=paths=source_relative \
-		--go-grpc_out=./minimaltest --go-grpc_opt=paths=source_relative \
+		--go_out ./minimaltest --go_opt=paths=source_relative \
+		--go-grpc_out ./minimaltest --go-grpc_opt=paths=source_relative \
+		--grpc-gateway_out ./minimaltest --grpc-gateway_opt=paths=source_relative \
 		./minimaltest/minimaltest.proto
 
 clean:
