@@ -100,7 +100,7 @@ func (s *MinimalTestServer) GetPair(ctx context.Context, request *pb.GetPairRequ
 
         var existingPair pb.Pair
         err := row.Scan(&existingPair.Id, &existingPair.Value)
-        if err != nil && err != sql.ErrNoRows {
+        if err != nil {
                 return &pb.PairResponse{ErrorMessage: fmt.Sprintf("Failed to fetch media from database: %s", err)}, nil
 	}
 
